@@ -6,12 +6,12 @@
 #    By: ohadmin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/02 19:15:34 by ohadmin           #+#    #+#              #
-#    Updated: 2023/10/02 19:23:53 by ohadmin          ###   ########.fr        #
+#    Updated: 2023/10/05 19:32:41 by ohadmin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Nombre del programa
-NAME = fractol.a
+NAME = fractal
 
 # Flags al compilar
 FLAGS = -g -Wall -Wextra -Werror 
@@ -20,10 +20,10 @@ FLAGS = -g -Wall -Wextra -Werror
 LNK = ar rcs
 
 # Include
-INC = fractol.h
+INC = fractal.h
 
 # Functions
-SRC = main.c
+SRC = main.c init.c math_utils.c render.c string_utils.c
 
 # Objects
 OBJ = $(SRC:.c=.o)
@@ -37,10 +37,10 @@ LMLX = libmlx.a
 
 #### Compilacion del programa ####
 
-all: $(NAME)
+all: $(NAME) clean
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o exe
+	@$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $@
 
 #	cc migration from tutorial
 %.o: %.c Makefile
@@ -57,6 +57,6 @@ clean:
 re: fclean all
 
 test:
-	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o exe
+	$(CC) $(SRC) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 .PHONY: all clean fclean re

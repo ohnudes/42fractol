@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   string_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohadmin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/05 18:04:19 by ohadmin           #+#    #+#             */
-/*   Updated: 2023/10/05 18:04:23 by ohadmin          ###   ########.fr       */
+/*   Created: 2023/10/05 18:07:52 by ohadmin           #+#    #+#             */
+/*   Updated: 2023/10/05 19:25:19 by ohadmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractal.h"
 
-int	main(int ac, char **av)
+int	ft_strncmp(char *s1, char *s2, int n)
 {
-	t_fractal	fractal;
-
-	if (ac == 2 && !ft_strncmp(av[1], "mandelbrot", 10)
-			|| ac == 4 && !ft_strncmp(av[1], "julia", 5))
+	if (!s1 || !s2 || n < 1)
+		return (0);
+	while (*s1 == *s2 && *s1 != '\0' && n > 0)
 	{
-		fractal.name = av[1];
-		fractal_init(&fractal);
-		fractal_render(&fractal);
-		mlx_loop(fractal.mlx_connection);
+		s1++;
+		s2++;
+		n--;
 	}
-	else
+	return (*s1 - *s2);
+}
+
+void	ft_putstr_fd(char *str, int fd)
+{
+	if (str == NULL || fd < 0)
+		return ;
+	if (*str)
 	{
-		ft_putstr_fd(ERROR_MESSAGE, STDERR_FILENO);
-		exit(EXIT_FAILURE);
+		write(fd, str, 1);
+		ft_putstr_fd(str + 1, fd);
 	}
 }
