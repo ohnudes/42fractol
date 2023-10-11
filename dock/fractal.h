@@ -6,7 +6,7 @@
 /*   By: ohadmin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 11:12:19 by ohadmin           #+#    #+#             */
-/*   Updated: 2023/10/05 19:13:23 by ohadmin          ###   ########.fr       */
+/*   Updated: 2023/10/11 16:17:10 by nmaturan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <math.h>
-# include "./mlx_linux/mlx.h"
+# include "./mlx_macos/mlx.h" // campus
+//# include "./mlx_linux/mlx.h" // zordon
 // to include: libft
 
 # define ERROR_MESSAGE "PARAMETER ERROR:\nplease enter correct fractol parameter\n"
