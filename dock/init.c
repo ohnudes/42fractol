@@ -6,7 +6,7 @@
 /*   By: ohadmin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 18:54:13 by ohadmin           #+#    #+#             */
-/*   Updated: 2023/10/05 18:54:15 by ohadmin          ###   ########.fr       */
+/*   Updated: 2023/10/11 16:46:06 by nmaturan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	fractal_init(t_fractal *fractal)
 			fractal->name);
 	if (fractal->mlx_window == NULL)
 	{
-		mlx_destroy_display(fractal->mlx_connection);
+		// LINUX mlx_destroy_display(fractal->mlx_connection);
 		free(fractal->mlx_connection);
 		malloc_error();
 	}
@@ -48,7 +48,7 @@ void	fractal_init(t_fractal *fractal)
 	if (fractal->img.img_ptr == NULL)
 	{
 		mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
-		mlx_destroy_display(fractal->mlx_connection);
+		// LINUX mlx_destroy_display(fractal->mlx_connection);
 		free(fractal->mlx_connection);
 		malloc_error();
 	}
